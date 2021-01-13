@@ -51,7 +51,7 @@ public class WordsProcessor {
     }
 
 
-    public void initBadWords(Path path) throws IOException {
+    private void initBadWords(Path path) throws IOException {
         reader = new BufferedReader(new FileReader(path.toFile()));
         String line;
         while((line = reader.readLine()) != null)

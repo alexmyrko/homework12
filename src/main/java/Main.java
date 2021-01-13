@@ -20,6 +20,8 @@ public class Main {
         Map<String, Integer> allWords = processor.getAllWords(songFilePath);
         Map<String, Integer> censoredWords = processor.getCensoredWords(allWords);
 
+        System.out.println("Total number of words in song: " + processor.getWordsCount() + "\n");
+
         System.out.print("Enter deep for search of repeated words: ");
         int n = Integer.parseInt(reader.readLine());
 
@@ -30,7 +32,7 @@ public class Main {
             System.out.println(String.format("%s - %d", entry.getKey(), entry.getValue()));
         }
 
-        String[] array = processor.getBadWordsToArray(processor.badWords);
+        String[] array = processor.getBadWordsToArray(processor.getBadWords());
         System.out.println("Bad words in array: " + Arrays.toString(array));
     }
 }

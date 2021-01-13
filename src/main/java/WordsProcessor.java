@@ -8,8 +8,9 @@ import java.util.stream.Collectors;
 
 public class WordsProcessor {
     BufferedReader reader;
-    Set<String> badWords = new HashSet<>();
-    static List<String> list = new ArrayList<>();
+    private int wordsCount;
+    private Set<String> badWords = new HashSet<>();
+    private static List<String> list = new ArrayList<>();
 
     public WordsProcessor(Path badWordsFilePath) throws IOException {
         initBadWords(badWordsFilePath);
@@ -24,6 +25,7 @@ public class WordsProcessor {
             StringTokenizer str = new StringTokenizer(line,regex);
             while(str.hasMoreTokens()) {
                 String word = str.nextToken().toLowerCase();
+                wordsCount++;
                 if (!words.containsKey(word))
                     words.put(word, 1);
                 else
@@ -55,5 +57,13 @@ public class WordsProcessor {
         while((line = reader.readLine()) != null)
             badWords.add(line.toLowerCase());
         reader.close();
+    }
+
+    public int getWordsCount() {
+        return wordsCount;
+    }
+
+    public Set<String> getBadWords() {
+        return badWords;
     }
 }
